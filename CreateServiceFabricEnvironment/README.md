@@ -1,0 +1,1 @@
+This area contains the scripts to create a 3 node type service fabric envionment in Azure with an Application Gateway at the front end, and uses an existing virtual network (a script is also provided to create this)
