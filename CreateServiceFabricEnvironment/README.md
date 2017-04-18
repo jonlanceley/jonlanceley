@@ -1,4 +1,4 @@
-<h2>3 node type service fabric envionment in Azure with an application gateway</h2>
+<h2>3 node type service fabric environment in Azure with an application gateway</h2>
 
 This area contains the scripts to create a 3 node type service fabric envionment in Azure with an Application Gateway at the front end, and uses an existing virtual network (a script is also provided to create this)
 
