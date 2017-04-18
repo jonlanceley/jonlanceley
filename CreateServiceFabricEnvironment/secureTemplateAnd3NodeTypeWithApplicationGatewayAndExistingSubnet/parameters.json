@@ -1,0 +1,199 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+
+  "parameters": {
+    "clusterName": {
+      "value": "mycluster"
+    },
+
+    // The reliabilityLevel of the cluster, should be at least silver for production workloads
+    "reliabilityLevel": {
+      "value": "Bronze"
+    },
+
+    // Frontend Node Type
+    "nt0InstanceCount": {
+      "value": 1 // Change to minimum of 2 for production
+    },
+    "vmNodeType0Size": {
+      "value": "Standard_A0" // Standard D1_V2 in production
+    },
+
+    //Backend Node Type (not used yet)
+    "nt1InstanceCount": {
+      "value": 1 // should be set to minimum of 5 in production
+    },
+    "vmNodeType1Size": {
+      "value": "Standard_A0" // Standard D1_V2 in production
+    },
+
+    // Primary Node Type (Management)
+    "nt2InstanceCount": {
+      "value": 3 // Change to minimum of 5 for production
+    },
+    "vmNodeType2Size": {
+      "value": "Standard_A0" // Standard D1_V2 in production
+    },
+
+
+    // Existing Public Static IP details (for management subnet)
+    "existingStaticIPResourceGroup": {
+      "value": "myclusterip"
+    },
+    "existingStaticIPName": {
+      "value": "mycluster"
+    },
+    "existingStaticIPDnsFQDN": {
+      "value": "mycluster.northeurope.cloudapp.azure.com"
+    },
+
+    // Name of the Application Gateway public ip (not static!)
+    "gatewayPublicIPAddressName": {
+      "value": "myclustergatewayip"
+    },
+
+    "applicationGatewayName": {
+      "value": "myClusterGateway"
+    },
+    "applicationGatewaySize": {
+      "value": "Standard_Small" // Change this to Standard_Medium or WAF_Medium in production
+    },
+    "applicationGatewayInstances": {
+      "value": 1 // change this to 2 in production
+    },
+
+    // Active Directory
+    "aadTenantId": {
+      "value": "<myTenantIdHere>"
+    },
+    "aadClusterApplicationId": {
+      "value": "<myAppIdHere>"
+    },
+    "aadClientApplicationId": {
+      "value": "<myClientAppIdHere>"
+    },
+
+    // Key vault and certificate for cluster to use
+    "sourceVaultValue": {
+      "value": "/subscriptions/<MySubscriptionIDHere>/resourceGroups/myclustervault/providers/Microsoft.KeyVault/vaults/myclustervault"
+    },
+    "certificateUrlValue": {
+      "value": "https://<myCertificateUrlValueHere>"
+    },
+    "certificateThumbprint": {
+      "value": "<MyCertificateThumbprintHere>"
+    },
+
+    // Where to create this stuff
+    "clusterLocation": {
+      "value": "northeurope"
+    },
+    "computeLocation": {
+      "value": "northeurope"
+    },
+
+    // VM username & password
+    "adminUserName": {
+      "value": "<myAdminUserNameHere>"
+    },
+    "adminPassword": {
+      "value": "<myAdminPasswordHere>"
+    },
+
+    "nicName": {
+      "value": "NIC-mycluster"
+    },
+
+    // Existing vnet
+    "virtualNetworkName": {
+      "value": "VNet-mycluster"
+    },
+
+    // Existing vnet resource group
+    "existingVNetRGName": {
+      "value": "mycluster"
+    },
+
+    // Existing subnet names in the virtual network
+    "subnet0Name": {
+      "value": "sfFrontEnd"
+    },
+    "subnet1Name": {
+      "value": "sfBackEnd"
+    },
+    "subnet2Name": {
+      "value": "sfManagement"
+    },
+    "subnetWAFName": {
+      "value": "WAF"
+    },
+
+    "applicationDiagnosticsStorageAccountName": {
+      "value": "dgmyclustersf7088"
+    },
+    "supportLogStorageAccountName": {
+      "value": "logsmyclustersf4056"
+    },
+
+    "vmImageSku": {
+      "value": "2016-Datacenter"
+    },
+
+    //Ports
+    "nt0ephemeralStartPort": {
+      "value": 49152
+    },
+    "nt0ephemeralEndPort": {
+      "value": 65534
+    },
+    "nt0applicationStartPort": {
+      "value": 20000
+    },
+    "nt0applicationEndPort": {
+      "value": 30000
+    },
+    "nt0fabricTcpGatewayPort": {
+      "value": 19000
+    },
+    "nt0fabricHttpGatewayPort": {
+      "value": 19080
+    },
+    "nt1ephemeralStartPort": {
+      "value": 49152
+    },
+    "nt1ephemeralEndPort": {
+      "value": 65534
+    },
+    "nt1applicationStartPort": {
+      "value": 20000
+    },
+    "nt1applicationEndPort": {
+      "value": 30000
+    },
+    "nt1fabricTcpGatewayPort": {
+      "value": 19000
+    },
+    "nt1fabricHttpGatewayPort": {
+      "value": 19080
+    },
+    "nt2ephemeralStartPort": {
+      "value": 49152
+    },
+    "nt2ephemeralEndPort": {
+      "value": 65534
+    },
+    "nt2applicationStartPort": {
+      "value": 20000
+    },
+    "nt2applicationEndPort": {
+      "value": 30000
+    },
+    "nt2fabricTcpGatewayPort": {
+      "value": 19000
+    },
+    "nt2fabricHttpGatewayPort": {
+      "value": 19080
+    }
+  }
+}
